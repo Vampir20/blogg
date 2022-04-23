@@ -1,0 +1,51 @@
+{% extends "template.html" %}
+
+{% block title %}
+    Articles
+{% endblock %}
+
+{% block content %}
+
+    <div class="header">
+        <div class="slider" >
+            <div class="slider-wrapper" id="slider">
+                {% for slide in all_slides %}
+                    <div class="slide">
+                        <h3>{{ slide.name }}</h3>
+                        <img src="{{ slide.image.url }}" alt="">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="categories">
+            <h2>Категории</h2>
+            {% for name, count in all_categories.items %}
+                <a href="{% url "detail_category" name.id %}">
+                    <div>{{ name }}</div>
+                    <div> {{ count }} </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="items">
+        {% for item in all_articles %}
+            <a href="{% url "detail_article" item.id %}" class="item">
+                <div>
+                    <img src="{{ item.image.url }}">
+                    <h3>{{ item.name|striptags|truncatechars:35 }}</h3>
+                    <div class="item-info">
+                        <div class="item-author-img">
+                            <img src="{{ item.author.avatar.url }}" alt="">
+                        </div>
+                        <div class="item-author-info">
+                            <p class="item-author">{{ item.author }}</p>
+                            <p class="item-date">{{ item.date|date:"j E Y H:i" }}</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+

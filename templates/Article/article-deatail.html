@@ -1,0 +1,52 @@
+{% extends "template.html" %}
+
+{% block title %}
+
+    {{ item.name }}
+
+{% endblock %}
+
+{% block content %}
+    <a href="{{ request.META.HTTP_REFERER }}" class="back">Вернуться Назад</a>
+    <div>
+        <div class="item-header">
+            <div class="item-left">
+                <img src="{{ item.image.url }}">
+                <div class="item-right">
+                    <div class="item-avatar">
+                        <img src="{{ item.author.avatar.url }}" alt="">
+                    </div>
+                    <div class="item-detail-info">
+                        <h3>{{ item.name }}</h3>
+                        <p>{{ item.author }}</p>
+                        <p>{{ item.description }}</p>
+                        <p>{{ item.date|date:"j E Y H:i" }}</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="item-body">
+                <div class="item-body__left">
+                    <p>{{ item.text }}</p>
+                </div>
+                <div class="item-body__right">
+                    <div class="last-news">
+                        <h4>Послдение Новости</h4>
+                        {% for last_news in last_five_news %}
+                            <div class="last-news__item">
+                                <div class="last-news__image">
+                                    <img src="{{ last_news.image.url }}" alt="">
+                                </div>
+                                <div class="last-news__text">
+                                    <p>{{ last_news.name|truncatechars:26 }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}

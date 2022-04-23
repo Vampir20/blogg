@@ -1,0 +1,25 @@
+{% extends "template.html" %}
+
+{% block content %}
+
+    <h1>{{ category_name.name }}</h1>
+     <div class="items">
+        {% for item in all_articles %}
+            <a href="{% url "detail_article" item.id %}" target="_blank" class="item">
+                <div>
+                    <img src="{{ item.image.url }}">
+                    <h3>{{ item.name|striptags|truncatechars:35 }}</h3>
+                    <div class="item-info">
+                        <div class="item-author-img">
+                            <img src="{{ item.author.avatar.url }}" alt="">
+                        </div>
+                        <div class="item-author-info">
+                            <p class="item-author">{{ item.author }}</p>
+                            <p class="item-date">{{ item.date|date:"j E Y H:i" }}</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

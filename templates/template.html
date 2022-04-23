@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static "Css/main.css" %}">
+</head>
+<body>
+<div class="menu">
+    <a href="#">Главное</a>
+    <a href="{% url "articles" %}">Статьи</a>
+    <a href="{% url "news" %}">Новости</a>
+</div>
+
+<div class="container">
+    {% block content %}
+
+    {% endblock %}
+</div>
+
+<footer>
+    <div class="footer">
+        <div class="navigate">
+            <h3>Навигация</h3>
+            <a href="">Главное</a>
+            <a href="">Новости</a>
+            <a href="">Статьи</a>
+        </div>
+        <div class="social">
+            <h3>Соц. Сети</h3>
+            <a href="">
+                <img src="{% static 'icons/vk.png' %}" alt=""> vk
+            </a>
+            <a href="">
+                <img src="{% static 'icons/instagram.png' %}" alt=""> instagram
+            </a>
+            <a href="">
+                <img src="{% static 'icons/telegram.png' %}" alt=""> telegram
+            </a>
+        </div>
+    </div>
+</footer>
+<script src="{% static "js/main.js" %}"></script>
+</body>
+</html>

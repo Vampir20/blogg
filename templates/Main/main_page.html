@@ -1,0 +1,7 @@
+{% extends "template.html" %}
+{% block content %}
+    <a href=" {% url "detail_article"  first_article.id %}" target="_blank" class="main-article">
+            <img src="{{ first_article.image.url }}" alt="">
+            <h3 class="main-article-title">{{ first_article.name }}</h3>
+    </a>
+{% endblock %}
