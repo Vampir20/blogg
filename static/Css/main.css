@@ -18,7 +18,7 @@
 
 .container {
     width: 70%;
-    margin: 50px auto;
+    margin: 100px auto 50px auto;
 }
 
 body {
@@ -39,15 +39,15 @@ body {
     box-shadow: 3px 3px 0 black;
     display: flex;
     width: calc(33% - 20px);
-    padding: 8px;
+    padding: 15px;
     margin-bottom: 40px;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 .item img {
     filter: grayscale(30%);
     width: 100%;
-    border-radius: 5px;
+    border-radius: 15px;
     height: 230px;
     object-fit: cover;
 
@@ -115,12 +115,13 @@ body {
 
 .item-info {
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 20% 80%;
 }
 
 .item-author-img img {
+    object-fit: cover;
     width: 100%;
-    height: 75px;
+    height: 40px;
 }
 
 .item-author {
@@ -135,7 +136,7 @@ body {
 .items h3 {
     text-transform: capitalize;
     max-height: 80px;
-    height: 80px;
+    height: auto;
     overflow: hidden;
 }
 
@@ -145,17 +146,29 @@ body {
     width: 100px;
 }
 
+.item-small-text {
+    margin: 10px 0;
+}
+
 .item-detail-info {
     color: white;
     text-align: center;
 }
 
 .menu {
-    background-color: #333333;
-    text-align: center;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    background-color: rgba(51, 51, 51, 0.2);
+    display: flex;
+    justify-content: center;
 }
 
 .menu a {
+    width: fit-content;
     color: white;
     margin: 10px 20px;
     display: inline-block;
@@ -177,6 +190,7 @@ body {
 }
 
 .categories {
+    padding: 15px 0;
     border-radius: 20px;
     text-align: center;
     background: var(--darkCard);
@@ -196,6 +210,7 @@ body {
 }
 
 .slider-wrapper {
+    height: 100%;
     transition: 1s;
     overflow: hidden;
     display: flex;
@@ -225,6 +240,7 @@ body {
 }
 
 .slide::before {
+    border-radius: 20px;
     z-index: 2;
     position: absolute;
     height: 100%;
@@ -353,4 +369,138 @@ body {
     transform: translate(-50%, -50%);
     color: white;
     font-size: 24px;
+}
+
+.profile-wrapper {
+    text-align: center;
+    display: inline-block;
+    width: 150px;
+    background-color: #333333;
+}
+
+.profile-wrapper.open {
+    height: 150px;
+    border-radius: 0 0 10px 10px;
+}
+
+.profile-blog.show .profile-wrapper {
+    background-color: black;
+}
+
+
+.profile-blog {
+    position: absolute;
+    z-index: 1000;
+    border-radius: 0 0 15px 15px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    opacity: 0;
+}
+
+.profile-blog.show {
+    opacity: 1;
+}
+
+.profile-button {
+
+}
+
+.profile__left {
+    display: flex;
+    justify-content: center;
+}
+
+.profile__left img {
+    height: 200px;
+    width: 200px;
+}
+
+.profile__right button {
+
+}
+
+.profile__right label {
+    margin-left: 10px;
+    color: white;
+    text-transform: capitalize;
+}
+
+.profile__right input {
+    border-radius: 5px;
+    width: 300px;
+    margin: 10px;
+    padding: 7px;
+    display: block;
+}
+
+.button {
+    transition: 0.5s;
+    margin-left: 10px;
+    text-align: center;
+    height: 40px;
+    width: 40px;
+    background-color: transparent;
+    background-image: url(../icons/save.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.button:hover {
+    height: 45px;
+    width: 45px;
+}
+
+.error-messages {
+    color: red;
+}
+
+form {
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin: auto;
+    padding: 20px;
+    height: fit-content;
+    width: 35%;
+    border-radius: 15px;
+    background-color: #262626;
+    color: white;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+input[data-autocompleted] {
+    background-color: transparent !important;
+}
+
+form input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 10px 0;
+    padding: 7px;
+    border-radius: 3px;
+    outline: none;
+    background-color: #2d2d2d;
+    color: white;
+    border: none;
+}
+
+form button {
+    display: block;
+    width: 50%;
+    box-sizing: border-box;
+    margin: 10px auto;
+    padding: 7px;
+    border-radius: 3px;
+    outline: none;
+    background-color: #2d2d2d;
+    color: white;
+    border: none;
+    text-transform: capitalize;
 }

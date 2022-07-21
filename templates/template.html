@@ -12,9 +12,22 @@
 </head>
 <body>
 <div class="menu">
-    <a href="#">Главное</a>
+    <a href="{% url "main_page" %}">Главное</a>
     <a href="{% url "articles" %}">Статьи</a>
     <a href="{% url "news" %}">Новости</a>
+    {% if not request.user.is_authenticated %}
+        <a href="{% url "register" %}">Зарегистривоться</a>
+        <a href="{% url "login" %}">Войти</a>
+    {% else %}
+        <div class="profile-wrapper">
+            <a href="" class="profile-button">Профиль</a>
+            <div class="profile-blog">
+                <a href="{% url "profile" %}">Профиль</a>
+                <a href="{% url "logout" %}">Выйти</a>
+            </div>
+        </div>
+
+    {% endif %}
 </div>
 
 <div class="container">
@@ -27,9 +40,9 @@
     <div class="footer">
         <div class="navigate">
             <h3>Навигация</h3>
-            <a href="">Главное</a>
-            <a href="">Новости</a>
-            <a href="">Статьи</a>
+            <a href="{% url "main_page" %}">Главное</a>
+            <a href="{% url "main_page" %}">Новости</a>
+            <a href="{%  url "articles" %}">Статьи</a>
         </div>
         <div class="social">
             <h3>Соц. Сети</h3>

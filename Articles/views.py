@@ -27,9 +27,10 @@ def categories_counter():
     all_categories = Categories.objects.all()
     for category_name in all_categories:
         count_article = len(Article.objects.filter(category=category_name))
-        categories.update({
-            category_name: count_article
-        })
+        if count_article > 0:
+            categories.update({
+                category_name: count_article
+            })
     return categories
 
 

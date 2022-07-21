@@ -1,0 +1,26 @@
+{% extends "template.html" %}
+
+{% block content %}
+
+    <div class="profile">
+        <div class="profile__left">
+            <img src="{{ author.avatar.url }}" alt="">
+        </div>
+        <div class="profile__right">
+            <form action="" method="post">
+                <h2>Изменение данных</h2>
+                {% csrf_token %}
+                <label for="username">username</label>
+                <input id="username" value="{{ author.username }}" name="username">
+
+                <label for="email">email</label>
+                <input id="email" value="{{ author.username.email }}" name="email">
+
+                <button class="button" type="submit"></button>
+            </form>
+        </div>
+    </div>
+
+
+
+{% endblock %}

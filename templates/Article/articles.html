@@ -7,7 +7,7 @@
 {% block content %}
 
     <div class="header">
-        <div class="slider" >
+        <div class="slider">
             <div class="slider-wrapper" id="slider">
                 {% for slide in all_slides %}
                     <div class="slide">
@@ -17,15 +17,19 @@
                 {% endfor %}
             </div>
         </div>
-        <div class="categories">
-            <h2>Категории</h2>
-            {% for name, count in all_categories.items %}
-                <a href="{% url "detail_category" name.id %}">
-                    <div>{{ name }}</div>
-                    <div> {{ count }} </div>
-                </a>
-            {% endfor %}
-        </div>
+        {% if all_categories.items %}
+            <div class="categories">
+                <h2>Категории</h2>
+                {% for name, count in all_categories.items %}
+                    {% if count != 0 %}
+                        <a href="{% url "detail_category" name.id %}">
+                            <div>{{ name }}</div>
+                            <div> {{ count }} </div>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
     <div class="items">
         {% for item in all_articles %}
@@ -33,6 +37,7 @@
                 <div>
                     <img src="{{ item.image.url }}">
                     <h3>{{ item.name|striptags|truncatechars:35 }}</h3>
+                    <p class="item-small-text">{{ item.text|striptags|truncatechars:60 }}</p>
                     <div class="item-info">
                         <div class="item-author-img">
                             <img src="{{ item.author.avatar.url }}" alt="">

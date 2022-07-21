@@ -1,0 +1,21 @@
+{% extends "template.html" %}
+
+{% block content %}
+
+    <form action="" method="post">
+        <h3>Login</h3>
+        {% csrf_token %}
+        <input type="text" placeholder="Username" name="nickname">
+        <input type="password" placeholder="Password" name="password">
+        <button type="submit">log in</button>
+        {# submit отправляет данные на сервер #}
+        {% if messages %}
+            <ul class="error-messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </form>
+
+{% endblock %}
